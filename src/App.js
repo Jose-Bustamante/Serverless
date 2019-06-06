@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { withAuthenticator } from 'aws-amplify-react'
 import { Auth } from 'aws-amplify'
@@ -9,17 +9,6 @@ import './App.css';
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import { createMeetup as CreateMeetup } from './graphql/mutations';
 
-// Mutation
-const meetupDetails = {
-  name: 'Meetup #25 - GraphQL with Amplify',
-  group: 'JS Belgrade',
-  date: '2019-10-19',
-  startTime: '18:00',
-  endTime: '20:00',
-  location: 'ICT Hub, Kralja Milana 10, Belgrade, Serbia',
-  description: 'Long form description'
-};
-
 
 function Meetups() {
   return <h2>List meetups</h2>;
@@ -29,8 +18,20 @@ function SingleMeetup() {
   return <h2>Show single meetup</h2>;
 }
 
-function AddMeetup() {
-  return <h2>Add a meetup</h2>;
+function AddMeetupComponent(submit) {
+  return <Fragment>
+    <h2>Add a meetup</h2>
+    <form onSubmit={submit}>
+      <input type="text" name="name">Name</input>
+      <input type="text" name="group">Group</input>
+      <input type="date" name="date">Date</input>
+      <input type="time" name="start">Time</input>
+      <input type="time" name="end">Time end</input>
+      <input type="text" name="location">Location</input>
+      <input type="text" name="description">Description</input>
+      <button type="submit">SUBMIT</button>
+    </form>
+  </Fragment>;
 }
 
 function UpdateMeetup() {
@@ -38,15 +39,19 @@ function UpdateMeetup() {
 }
 
 
-
 class App extends React.Component {
 
-  async componentDidMount() {
-    const user = await Auth.currentAuthenticatedUser()
-    console.log('user:', user)
+  async createMeetup(data) {
+    console.log('PASA POR createMeetup --> ', data);
+    await API.graphql(graphqlOperation(CreateMeetup, {input: data}));
+  }
 
-    const newMeetup = await API.graphql(graphqlOperation(CreateMeetup, {input: meetupDetails}));
-    console.log(newMeetup);
+  async componentDidMount() {
+    // const user = await Auth.currentAuthenticatedUser()
+    // console.log('user:', user)
+
+    // const newMeetup = await API.graphql(graphqlOperation(CreateMeetup, {input: meetupDetails}));
+    // console.log(newMeetup);
   }
 
   render () {
@@ -65,7 +70,7 @@ class App extends React.Component {
 
           <Route path="/" exact component={Meetups} />
           <Route path="/meetups/:id" component={SingleMeetup} />
-          <Route path="/add" component={AddMeetup} />
+          <Route path="/add" component={(createMeetup) => AddMeetupComponent(createMeetup)} />
           <Route path="/update/:id" component={UpdateMeetup} />
         </div>
       </Router>
