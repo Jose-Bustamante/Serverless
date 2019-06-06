@@ -2,8 +2,23 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { withAuthenticator } from 'aws-amplify-react'
 import { Auth } from 'aws-amplify'
+
 import logo from './logo.svg';
 import './App.css';
+
+import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import { createMeetup as CreateMeetup } from './graphql/mutations';
+
+// Mutation
+const meetupDetails = {
+  name: 'Meetup #25 - GraphQL with Amplify',
+  group: 'JS Belgrade',
+  date: '2019-10-19',
+  startTime: '18:00',
+  endTime: '20:00',
+  location: 'ICT Hub, Kralja Milana 10, Belgrade, Serbia',
+  description: 'Long form description'
+};
 
 
 function Meetups() {
@@ -29,6 +44,9 @@ class App extends React.Component {
   async componentDidMount() {
     const user = await Auth.currentAuthenticatedUser()
     console.log('user:', user)
+
+    const newMeetup = await API.graphql(graphqlOperation(CreateMeetup, {input: meetupDetails}));
+    console.log(newMeetup);
   }
 
   render () {
