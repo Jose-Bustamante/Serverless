@@ -1,14 +1,14 @@
 {
     "dev": {
         "awscloudformation": {
-            "AuthRoleName": "my-app-dev-20190606144629-authRole",
-            "UnauthRoleArn": "arn:aws:iam::658277118888:role/my-app-dev-20190606144629-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::658277118888:role/my-app-dev-20190606144629-authRole",
+            "AuthRoleName": "my-app-dev-20190606150228-authRole",
+            "UnauthRoleArn": "arn:aws:iam::658277118888:role/my-app-dev-20190606150228-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::658277118888:role/my-app-dev-20190606150228-authRole",
             "Region": "eu-west-2",
-            "DeploymentBucketName": "my-app-dev-20190606144629-deployment",
-            "UnauthRoleName": "my-app-dev-20190606144629-unauthRole",
-            "StackName": "my-app-dev-20190606144629",
-            "StackId": "arn:aws:cloudformation:eu-west-2:658277118888:stack/my-app-dev-20190606144629/1b32ed20-8859-11e9-b0f4-0a1f01fad44c"
+            "DeploymentBucketName": "my-app-dev-20190606150228-deployment",
+            "UnauthRoleName": "my-app-dev-20190606150228-unauthRole",
+            "StackName": "my-app-dev-20190606150228",
+            "StackId": "arn:aws:cloudformation:eu-west-2:658277118888:stack/my-app-dev-20190606150228/56cf79f0-885b-11e9-a1f7-06db0885f0f6"
         }
     }
 }
