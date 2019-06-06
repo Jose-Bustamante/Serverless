@@ -24,6 +24,7 @@ function App() {
   return (
     <Router>
       <div>
+        MENU:
         <nav>
           <ul>
             <li><Link to="/">All meetups</Link></li>
