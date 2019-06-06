@@ -1,0 +1,10 @@
+{
+    "AppSyncApiName": "GraphQLApi",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authmyappb3e15c1a",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
