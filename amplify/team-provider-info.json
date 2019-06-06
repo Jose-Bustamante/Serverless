@@ -1,0 +1,14 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "meetup-frontend-dev-20190606135005-authRole",
+            "UnauthRoleArn": "arn:aws:iam::658277118888:role/meetup-frontend-dev-20190606135005-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::658277118888:role/meetup-frontend-dev-20190606135005-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "meetup-frontend-dev-20190606135005-deployment",
+            "UnauthRoleName": "meetup-frontend-dev-20190606135005-unauthRole",
+            "StackName": "meetup-frontend-dev-20190606135005",
+            "StackId": "arn:aws:cloudformation:eu-west-1:658277118888:stack/meetup-frontend-dev-20190606135005/3a0a68c0-8851-11e9-a947-064aa725f74e"
+        }
+    }
+}
